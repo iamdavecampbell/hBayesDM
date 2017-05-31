@@ -177,7 +177,7 @@ igt_pvl_delta_TrialDept <- function(data          = "choose",
   # Specify the number of parameters and parameters of interest 
   numPars <- 4
   POI     <- c("mu_A", "mu_alpha", "mu_cons",  "mu_lambda",
-               "sigma", 
+               "sigma2", 
                "A", "alpha", "cons", "lambda",
                "log_lik")
   
@@ -248,7 +248,7 @@ igt_pvl_delta_TrialDept <- function(data          = "choose",
     genInitList <- function() {
       list(
         mu_p      = c( qnorm(inits_fixed[1]), qnorm(inits_fixed[2] /2), qnorm( inits_fixed[3] /5 ), qnorm( inits_fixed[4] / 10 ) ),
-        sigma     = c(1.0, 1.0, 1.0, 1.0),
+        sigma2     = c(1.0, 1.0, 1.0, 1.0),
         A_pr      = rep( qnorm(inits_fixed[1]), numSubjs),
         alpha_pr  = rep( qnorm(inits_fixed[2]/2), numSubjs),
         cons_pr   = rep( qnorm(inits_fixed[3]/5), numSubjs),
