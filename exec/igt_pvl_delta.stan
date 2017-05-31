@@ -15,7 +15,7 @@ parameters {
 # Declare all parameters as vectors for vectorizing
   # Hyper(group)-parameters  
   vector[4] mu_p;  
-  vector<lower=0>[4] sigma;
+  vector<lower=0>[4] sigma2;
     
   # Subject-level raw parameters (for Matt trick)
   vector[N] A_pr;
@@ -32,17 +32,17 @@ transformed parameters {
   vector<lower=0,upper=10>[N] lambda;
     
   for (i in 1:N) {
-    A[i]      = Phi_approx( mu_p[1] + sigma[1] * A_pr[i] );
-    alpha[i]  = Phi_approx( mu_p[2] + sigma[2] * alpha_pr[i] ) * 2;
-    cons[i]   = Phi_approx( mu_p[3] + sigma[3] * cons_pr[i] ) * 5;
-    lambda[i] = Phi_approx( mu_p[4] + sigma[4] * lambda_pr[i] ) * 10;
+    A[i]      = Phi_approx( mu_p[1] + sqrt(sigma2[1]) * A_pr[i] );
+    alpha[i]  = Phi_approx( mu_p[2] + sqrt(sigma2[2]) * alpha_pr[i] ) * 2;
+    cons[i]   = Phi_approx( mu_p[3] + sqrt(sigma2[3]) * cons_pr[i] ) * 5;
+    lambda[i] = Phi_approx( mu_p[4] + sqrt(sigma2[4]) * lambda_pr[i] ) * 10;
   }
 }
 
 model {
 # Hyperparameters
   mu_p  ~ normal(0, 1);
-  sigma ~ cauchy(0, 5);
+  sigma2 ~ inv_gamma(5, 1);
   
   # individual parameters
   A_pr      ~ normal(0,1);
