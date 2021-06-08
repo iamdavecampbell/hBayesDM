@@ -1,22 +1,4 @@
 
-This fork is mostly the same as the main repo < CCS-Lab/hBayesDM >.  
-The main changes are 
-1 - the addition of trial dependent models for the IGT pvl delta and decay models.  
-2 - Changes to the prior distributions, removing Cauchy priors on standard deviation terms (sigmas) and replacing them with Inverse Gamma priors on variances (sigma2).  The Cauchy prior has overly heavy tails that were causing problems with the variance estimates.
-
-Main modifications are these R files and their corresponding stan files.
-igt_pvl_decay.R
-igt_pvl_delta_TrialDept.R <-- new model
-igt_pvl_delta.R
-igt_pvl_decay_TrialDept.R <-- new model
-
-
-
-
-
-From the master CCS-Lab/hBayesDM fork:
-========================================================================================================================
-
 The **hBayesDM** (hierarchical Bayesian modeling of Decision-Making tasks) is a user-friendly R package that offers hierarchical Bayesian analysis of various computational models on an array of decision-making tasks. The hBayesDM package uses [Stan](http://mc-stan.org/) for Bayesian inference. 
 
 Installation
