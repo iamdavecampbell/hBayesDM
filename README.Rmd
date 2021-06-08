@@ -1,24 +1,18 @@
+This is the code used in this paper:
+Baitz et a. (2021) "Component processes of decision making in a community sample of precariously housed persons: associations with learning and memory, and health-risk behaviours" Frontiers in Psychology
 
-The **hBayesDM** (hierarchical Bayesian modeling of Decision-Making tasks) is a user-friendly R package that offers hierarchical Bayesian analysis of various computational models on an array of decision-making tasks. The hBayesDM package uses [Stan](http://mc-stan.org/) for Bayesian inference. 
-
-Installation
-------------
-**(Only for Windows users)** First download and install Rtools from this link: http://cran.r-project.org/bin/windows/Rtools/. For detailed instructions, please go to this link: https://github.com/stan-dev/rstan/wiki/Installing-RStan-on-Windows. 
+https://www.frontiersin.org/articles/10.3389/fpsyg.2021.571423/abstract
 
 
-You can install the latest version from github with:
+This fork is mostly the same as the main repo < CCS-Lab/hBayesDM >.  
+The main changes are 
+1 - the addition of trial dependent models for the IGT pvl delta and decay models.  
+2 - Changes to the prior distributions, removing Cauchy priors on standard deviation terms (sigmas) and replacing them with Inverse Gamma priors on variances (sigma2).  The Cauchy prior has overly heavy tails that were causing problems with the variance estimates.
 
-``` r
-# install 'devtools' if required
-if (!require(devtools)) install.packages("devtools")  
+Main modifications are these R files and their corresponding stan files.
+igt_pvl_decay.R
+igt_pvl_delta_TrialDept.R <-- new model
+igt_pvl_delta.R
+igt_pvl_decay_TrialDept.R <-- new model
 
-# install the latest loo package that fixed a bug (Jan 18, 2017)
-devtools::install_github("stan-dev/loo", build_vignettes = TRUE)  
-devtools::install_github("CCS-Lab/hBayesDM")
-```
-
-Please go to **[hBayesDM Tutorial](http://rpubs.com/CCSL/hBayesDM)** for more information about the package.
-
-
-If you encounter a problem or a bug, please use our mailing list: https://groups.google.com/forum/#!forum/hbayesdm-users, or you can directly create an issue on [GitHub](https://github.com/CCS-Lab/hBayesDM/issues/new). 
 
