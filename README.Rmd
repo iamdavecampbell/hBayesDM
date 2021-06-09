@@ -1,6 +1,5 @@
-This is the code used in this paper:
+See the branch <Code_for_Frontiers_in_Psychology_2021> for the code used in the paper:
 Baitz et a. (2021) "Component processes of decision making in a community sample of precariously housed persons: associations with learning and memory, and health-risk behaviours" Frontiers in Psychology
-
 https://www.frontiersin.org/articles/10.3389/fpsyg.2021.571423/abstract
 
 
